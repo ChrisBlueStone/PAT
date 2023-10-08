@@ -153,3 +153,5 @@ Note that it's possible to have duplicate keys, so it's up to the parser to dete
 ## PAT API
 
 A C++ API is included for loading and parsing PAT files. It can be accessed [here](./src/cppapi/)
+
+A C API is included for loading and parsing PAT files. It can be accessed [here](./src/capi/)

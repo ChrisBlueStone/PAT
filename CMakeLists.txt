@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.21.2)
 project(PAT VERSION 1.0.0)
+project(PAT_C VERSION 1.0.0 LANGUAGES C)
 
 include(CTest)
 enable_testing()
@@ -22,8 +23,24 @@ set_target_properties(PAT
 	PROPERTIES
 		CXX_STANDARD 11
 		CXX_STANDARD_REQUIRED True
-		CMAKE_CXX_FLAGS_RELEASE "-O2 -s"
-		CMAKE_C_FLAGS_RELEASE "-O2 -s"
+		CMAKE_CXX_FLAGS_RELEASE "-O2 -s -Wall -Wextra -pendantic"
+)
+
+add_library(PAT_C
+	${PROJECT_SOURCE_DIR}/src/capi/pat.c
+	${PROJECT_SOURCE_DIR}/src/capi/patimport.c
+)
+
+target_include_directories(PAT_C
+	PUBLIC
+		${PROJECT_SOURCE_DIR}/src/capi
+)
+
+set_target_properties(PAT_C
+	PROPERTIES
+		C_STANDARD 99
+		C_STANDARD_REQUIRED True
+		CMAKE_C_FLAGS_RELEASE "-O2 -s -Wall -Wextra -pendantic"
 )
 
 if (BUILD_EXAMPLES)

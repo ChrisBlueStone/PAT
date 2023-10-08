@@ -16,7 +16,7 @@ struct PAT
 	std::vector<PAT> children;
 
 	/// \brief Assigns to \a output the value of the last child's token.
-	/// \param output A reference to  the string to which to assign the last child's token value.
+	/// \param output A reference to the string to which to assign the last child's token value.
 	/// \return Returns true if the node has any children, otherwise false.
 	bool TryGetValue(string& output) const;
 

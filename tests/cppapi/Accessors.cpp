@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <string>
 
-int PATAccessors(int argc, char** argv)
+int Accessors(int argc, char** argv)
 {
 	PAT pat = {
 		"", "", {{
@@ -53,6 +53,8 @@ int PATAccessors(int argc, char** argv)
 	// Test finding and selecting
 	assert(&pat.Find("A") == &A);
 	assert(&pat.Find("A", A2) == &A2);
+	assert(&pat.Find("null") != &pat[0]);
+	assert(pat.Find("null").token != "null");
 	assert(&pat.Select("A", 0) == &A);
 	assert(&pat.Select("A", 1) == &A2);
 	
